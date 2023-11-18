@@ -1,10 +1,8 @@
 <template>
-    <div class="text-sm text-orange-400">badro</div>
-    <Login />
+    <div>Welcome to our App</div>
 </template>
 
 <script setup>
-import Login from './Login.vue';
 </script>
 
 <style lang="scss" scoped>
