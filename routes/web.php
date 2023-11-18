@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', [UserController::class, "index"]);
+Route::get('login', [UserController::class, "loginPage"]);
+Route::get('register', [UserController::class, "registerPage"]);
