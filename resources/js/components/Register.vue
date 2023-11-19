@@ -7,10 +7,12 @@
             <div class="grid mb-5">
                 <label class="font-semibold" for="name">Name</label>
                 <input class="rounded-md border border-gray-500 px-3 py-2" id="name" name="name" type="text" v-model="name">
+                <p v-if="errorMessages.name" class="ml-3 mt-2 text-red-500 font-bold text-sm">{{errorMessages.name.toString()}}</p>
             </div>
             <div class="grid mb-5">
                 <label class="font-semibold" for="email">Email</label>
                 <input class="rounded-md border border-gray-500 px-3 py-2" id="email" name="email" type="text" v-model="email">
+                <p v-if="errorMessages.email" class="ml-3 mt-2 text-red-500 font-bold text-sm">{{errorMessages.email.toString()}}</p>
             </div>
             <div class="grid mb-5">
                 <label class="font-semibold" for="password">Password</label>
@@ -20,6 +22,7 @@
                 type="password" 
                 v-model="password" 
                 minlength="8">
+                <p v-if="errorMessages.password" class="ml-3 mt-2 text-red-500 font-bold text-sm">{{errorMessages.password.toString()}}</p>
             </div>
             <div class="grid mb-5">
                 <label class="font-semibold" for="password">Confirm Password</label>
@@ -29,9 +32,6 @@
                 type="password" 
                 v-model="password_confirmation" 
                 minlength="8">
-            </div>
-            <div v-if="errors" class="mb-5">
-                <p class="text-red-500 font-bold">{{errors}}</p>
             </div>
             <div class="mb-5 text-center">
                 <p>you already have an account? <span class="underline font-semibold"><a href="/register">Login</a></span></p>
@@ -52,24 +52,24 @@
     const email = ref("")
     const password = ref("")
     const password_confirmation = ref("")
-    let errors = ref("")
+    let errorMessages = ref({})
 
     const userStore = useUserStore()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const {user, token, error} = await register({
+        const {user, token, errors} = await register({
             name: name.value,
             email: email.value,
-            password: password_confirmation.value,
+            password: password.value,
             password_confirmation: password_confirmation.value
         });
-        if (!error) {
+        if (!errors) {
             userStore.isLogged = true;
             userStore.user = user;
             userStore.token = token;
             window.location.href = "/";
         }
-        errors.value = error;
+        errorMessages.value = errors;
     }
 </script>
