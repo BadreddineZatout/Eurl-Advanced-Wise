@@ -6,11 +6,14 @@
             </div>
             <div class="grid mb-5">
                 <label class="font-semibold" for="email">Email</label>
-                <input class="rounded-md border border-gray-500 px-3 py-2" id="email" name="email" type="text" v-model="email">
+                <input class="rounded-md border border-gray-500 px-3 py-2" id="email" name="email" type="email" v-model="email" required>
             </div>
             <div class="grid mb-5">
                 <label class="font-semibold" for="password">Password</label>
-                <input class="rounded-md border border-gray-500 px-3 py-2" id="password" name="password" type="password" v-model="password">
+                <input class="rounded-md border border-gray-500 px-3 py-2" id="password" name="password" type="password" v-model="password" required>
+            </div>
+            <div v-if="errors" class="mb-5">
+                <p class="text-red-500 font-bold">{{errors}}</p>
             </div>
             <div class="mb-5">
                 <p>you don't have an account? <span class="underline font-semibold"><a href="/register">Create an account</a></span></p>
@@ -24,12 +27,16 @@
 
 <script setup>
     import { ref } from "vue";
+    import {login} from "../utils/auth"
 
     const email = ref("")
     const password = ref("")
+    let errors = ref("")
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(email.value, password.value)
+        const {user, error} = await login(email.value, password.value);
+        if (!error) window.location.href = "/"
+        errors.value = error;
     }
 </script>

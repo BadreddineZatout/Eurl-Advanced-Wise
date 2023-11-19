@@ -29,14 +29,14 @@ class UserController extends Controller
         $user = User::where([
             "email" => $request->email,
         ])->first();
-        if (!$user) return response(["message" => "Invalid Email"], 401);
-        if (Hash::check($request->password, $user->password)) return response()->json($user, 200);
-        return response(["message" => "Invalid Password"], 401);
+        if (!$user) return response(["error" => "Invalid Email"], 401);
+        if (Hash::check($request->password, $user->password)) return response()->json(["user" => $user], 200);
+        return response(["error" => "Invalid Password"], 401);
     }
 
     function register(RegisterRequest $request)
     {
         $user = User::create($request->validated());
-        return response()->json($user, 200);
+        return response()->json(["user" => $user], 200);
     }
 }
