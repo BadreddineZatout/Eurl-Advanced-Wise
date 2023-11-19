@@ -15,7 +15,10 @@ class UserController extends Controller
      */
     public function loginPage()
     {
-        if (auth()->check()) return redirect("/");
+        if (auth()->check()) {
+            return redirect('/');
+        }
+
         return view('auth.login');
     }
 
@@ -24,7 +27,10 @@ class UserController extends Controller
      */
     public function registerPage()
     {
-        if (auth()->check()) return redirect("/");
+        if (auth()->check()) {
+            return redirect('/');
+        }
+
         return view('auth.register');
     }
 
@@ -38,12 +44,13 @@ class UserController extends Controller
         $user = User::where([
             'email' => $request->email,
         ])->first();
-        if (!$user) {
+        if (! $user) {
             return response(['errors' => ['email' => 'Invalid Email']], 401);
         }
         if (Hash::check($request->password, $user->password)) {
             $token = $user->createToken('user-auth');
             Auth::login($user);
+
             return response()->json(['user' => $user, 'token' => $token->plainTextToken], 200);
         }
 
@@ -61,5 +68,13 @@ class UserController extends Controller
         $token = $user->createToken('user-auth');
 
         return response()->json(['user' => $user, 'token' => $token->plainTextToken], 200);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        session()->invalidate();
+
+        return response()->json(['message' => 'logout success'], 200);
     }
 }

@@ -24,3 +24,13 @@ export const register = async (userData) => {
     });
     return response.json();
 };
+
+export const logout = async (userData) => {
+    const response = await fetch(`${API_URL}/api/logout`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    return response.json();
+};
