@@ -10,7 +10,7 @@
             </div>
             <div class="grid mb-5">
                 <label class="font-semibold" for="password">Password</label>
-                <input class="rounded-md border border-gray-500 px-3 py-2" id="password" name="password" type="password" v-model="password" required>
+                <input class="rounded-md border border-gray-500 px-3 py-2" id="password" name="password" type="password" v-model="password" minlength="8" required>
             </div>
             <div v-if="errors" class="mb-5">
                 <p class="text-red-500 font-bold">{{errors}}</p>
@@ -38,10 +38,11 @@
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const {user, error} = await login(email.value, password.value);
+        const {user, token, error} = await login(email.value, password.value);
         if (!error){
             userStore.isLogged = true;
-            userStore.data = user
+            userStore.user = user
+            userStore.token = token
             window.location.href = "/";
         }
         errors.value = error;

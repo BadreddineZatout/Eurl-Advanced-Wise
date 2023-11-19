@@ -4,8 +4,8 @@ export const useUserStore = defineStore("user", {
     state: () => {
         return {
             isLogged: false,
-            data: {},
-            token: "test token",
+            user: {},
+            token: "",
         };
     },
     persist: true,

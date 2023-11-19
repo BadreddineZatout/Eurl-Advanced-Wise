@@ -14,11 +14,21 @@
             </div>
             <div class="grid mb-5">
                 <label class="font-semibold" for="password">Password</label>
-                <input class="rounded-md border border-gray-500 px-3 py-2" id="password" name="password" type="password" v-model="password">
+                <input id="password" 
+                class="rounded-md border border-gray-500 px-3 py-2" 
+                name="password" 
+                type="password" 
+                v-model="password" 
+                minlength="8">
             </div>
             <div class="grid mb-5">
                 <label class="font-semibold" for="password">Confirm Password</label>
-                <input class="rounded-md border border-gray-500 px-3 py-2" id="password_confirmation" name="password_confirmation" type="password" v-model="password_confirmation">
+                <input id="password_confirmation" 
+                class="rounded-md border border-gray-500 px-3 py-2" 
+                name="password_confirmation" 
+                type="password" 
+                v-model="password_confirmation" 
+                minlength="8">
             </div>
             <div v-if="errors" class="mb-5">
                 <p class="text-red-500 font-bold">{{errors}}</p>
@@ -48,7 +58,7 @@
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const {user, error} = await register({
+        const {user, token, error} = await register({
             name: name.value,
             email: email.value,
             password: password_confirmation.value,
@@ -56,7 +66,8 @@
         });
         if (!error) {
             userStore.isLogged = true;
-            userStore.data = user;
+            userStore.user = user;
+            userStore.token = token;
             window.location.href = "/";
         }
         errors.value = error;
