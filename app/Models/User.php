@@ -48,14 +48,14 @@ class User extends Authenticatable implements FilamentUser
     ];
 
     const LOGIN_RULES = [
-        "email" => ["required", "email"],
-        "password" => ["required", "min:8"]
+        'email' => ['required', 'email'],
+        'password' => ['required', 'min:8'],
     ];
 
     const REGISTER_RULES = [
-        "name" => ["required", "max:255"],
-        "email" => ["required", "email", "unique:users,email"],
-        "password" => ["required", "min:8", "confirmed"]
+        'name' => ['required', 'max:255'],
+        'email' => ['required', 'email', 'unique:users,email'],
+        'password' => ['required', 'min:8', 'confirmed'],
     ];
 
     public function isAdmin(): bool

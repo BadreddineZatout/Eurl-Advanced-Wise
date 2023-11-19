@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class UserPolicy
 {
@@ -36,7 +35,10 @@ class UserPolicy
      */
     public function update(User $user, User $model): bool
     {
-        if ($model->isUser()) return true;
+        if ($model->isUser()) {
+            return true;
+        }
+
         return $user->isAdmin() && $user->id == $model->id;
     }
 
