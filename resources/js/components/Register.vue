@@ -16,6 +16,10 @@
                 <label class="font-semibold" for="password">Password</label>
                 <input class="rounded-md border border-gray-500 px-3 py-2" id="password" name="password" type="password" v-model="password">
             </div>
+            <div class="grid mb-5">
+                <label class="font-semibold" for="password">Confirm Password</label>
+                <input class="rounded-md border border-gray-500 px-3 py-2" id="password_confirmation" name="password_confirmation" type="password" v-model="password_confirmation">
+            </div>
             <div class="mb-5 text-center">
                 <p>you already have an account? <span class="underline font-semibold"><a href="/register">Login</a></span></p>
             </div>
@@ -32,9 +36,10 @@
     const name = ref("")
     const email = ref("")
     const password = ref("")
+    const password_confirmation = ref("")
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(name.value, email.value, password.value)
+        console.log(name.value, email.value, password.value, password_confirmation.value)
     }
 </script>
