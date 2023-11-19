@@ -20,6 +20,9 @@
                 <label class="font-semibold" for="password">Confirm Password</label>
                 <input class="rounded-md border border-gray-500 px-3 py-2" id="password_confirmation" name="password_confirmation" type="password" v-model="password_confirmation">
             </div>
+            <div v-if="errors" class="mb-5">
+                <p class="text-red-500 font-bold">{{errors}}</p>
+            </div>
             <div class="mb-5 text-center">
                 <p>you already have an account? <span class="underline font-semibold"><a href="/register">Login</a></span></p>
             </div>
@@ -32,14 +35,23 @@
 
 <script setup>
     import { ref } from "vue";
+    import { register } from "../utils/auth";
 
     const name = ref("")
     const email = ref("")
     const password = ref("")
     const password_confirmation = ref("")
+    let errors = ref("")
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(name.value, email.value, password.value, password_confirmation.value)
+        const {user, error} = await register({
+            name: name.value,
+            email: email.value,
+            password: password_confirmation.value,
+            password_confirmation: password_confirmation.value
+        });
+        if (!error) window.location.href = "/"
+        errors.value = error;
     }
 </script>
