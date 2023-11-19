@@ -8,6 +8,9 @@
             <a class="hover:font-semibold" :class="{active: isRegisterPage}" href="/register">Register</a>
             <a class="hover:font-semibold" :class="{active: isLoginPage}" href="login">Login</a>
         </div>
+        <div v-if="userStore.isLogged" class="flex justify-between items-center gap-x-5">
+            <button class="hover:font-semibold" @click="logout">Logout</button>
+        </div>
     </div>
 </template>
 
@@ -19,6 +22,11 @@ import { useUserStore } from "../stores/user";
     const isLoginPage = ref(window.location.pathname=='/login')
     
     const userStore = useUserStore()
+
+    const logout = () => {
+        userStore.$reset();
+        window.location.reload();
+    }
 </script>
 
 <style scoped>
