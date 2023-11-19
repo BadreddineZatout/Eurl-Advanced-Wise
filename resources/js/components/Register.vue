@@ -36,12 +36,15 @@
 <script setup>
     import { ref } from "vue";
     import { register } from "../utils/auth";
+    import {useUserStore} from "../stores/user"
 
     const name = ref("")
     const email = ref("")
     const password = ref("")
     const password_confirmation = ref("")
     let errors = ref("")
+
+    const userStore = useUserStore()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -51,7 +54,11 @@
             password: password_confirmation.value,
             password_confirmation: password_confirmation.value
         });
-        if (!error) window.location.href = "/"
+        if (!error) {
+            userStore.isLogged = true;
+            userStore.data = user;
+            window.location.href = "/";
+        }
         errors.value = error;
     }
 </script>

@@ -28,15 +28,22 @@
 <script setup>
     import { ref } from "vue";
     import {login} from "../utils/auth"
+    import {useUserStore} from "../stores/user"
 
     const email = ref("")
     const password = ref("")
     let errors = ref("")
 
+    const userStore = useUserStore()
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const {user, error} = await login(email.value, password.value);
-        if (!error) window.location.href = "/"
+        if (!error){
+            userStore.isLogged = true;
+            userStore.data = user
+            window.location.href = "/";
+        }
         errors.value = error;
     }
 </script>
