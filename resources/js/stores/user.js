@@ -8,4 +8,5 @@ export const useUserStore = defineStore("user", {
             token: "test token",
         };
     },
+    persist: true,
 });
