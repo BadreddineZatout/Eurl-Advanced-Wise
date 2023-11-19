@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,6 +15,7 @@ class UserController extends Controller
      */
     public function loginPage()
     {
+        if (auth()->check()) return redirect("/");
         return view('auth.login');
     }
 
@@ -22,6 +24,7 @@ class UserController extends Controller
      */
     public function registerPage()
     {
+        if (auth()->check()) return redirect("/");
         return view('auth.register');
     }
 
@@ -35,12 +38,12 @@ class UserController extends Controller
         $user = User::where([
             'email' => $request->email,
         ])->first();
-        if (! $user) {
+        if (!$user) {
             return response(['errors' => ['email' => 'Invalid Email']], 401);
         }
         if (Hash::check($request->password, $user->password)) {
             $token = $user->createToken('user-auth');
-
+            Auth::login($user);
             return response()->json(['user' => $user, 'token' => $token->plainTextToken], 200);
         }
 

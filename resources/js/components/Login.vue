@@ -7,12 +7,12 @@
             <div class="grid mb-5">
                 <label class="font-semibold" for="email">Email</label>
                 <input class="rounded-md border border-gray-500 px-3 py-2" id="email" name="email" type="email" v-model="email" required>
-                <p v-if="errorMessages.email" class="ml-3 mt-2 text-red-500 font-bold text-sm">{{errorMessages.email}}</p>
+                <p v-if="errorMessages?.email" class="ml-3 mt-2 text-red-500 font-bold text-sm">{{errorMessages.email}}</p>
             </div>
             <div class="grid mb-5">
                 <label class="font-semibold" for="password">Password</label>
                 <input class="rounded-md border border-gray-500 px-3 py-2" id="password" name="password" type="password" v-model="password" minlength="8" required>
-                <p v-if="errorMessages.password" class="ml-3 mt-2 text-red-500 font-bold text-sm">{{errorMessages.password}}</p>
+                <p v-if="errorMessages?.password" class="ml-3 mt-2 text-red-500 font-bold text-sm">{{errorMessages.password}}</p>
             </div>
             <div class="mb-5">
                 <p>you don't have an account? <span class="underline font-semibold"><a href="/register">Create an account</a></span></p>

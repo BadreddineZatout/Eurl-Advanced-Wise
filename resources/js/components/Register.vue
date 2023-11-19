@@ -55,7 +55,7 @@
     let errorMessages = ref({})
 
     const userStore = useUserStore()
-
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         const {user, token, errors} = await register({
