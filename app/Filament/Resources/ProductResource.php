@@ -2,25 +2,26 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SupplierResource\Pages;
-use App\Filament\Resources\SupplierResource\RelationManagers;
-use App\Models\Supplier;
+use App\Filament\Resources\ProductResource\Pages;
+use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SupplierResource extends Resource
+class ProductResource extends Resource
 {
-    protected static ?string $model = Supplier::class;
+    protected static ?string $model = Product::class;
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
     public static function form(Form $form): Form
     {
@@ -29,24 +30,19 @@ class SupplierResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('country_id')
-                    ->relationship('country', 'name')->searchable()
+                Forms\Components\Select::make('supplier_id')
+                    ->relationship('supplier', 'name')
+                    ->searchable()
                     ->preload()
                     ->required(),
-                Forms\Components\TextInput::make('email')
-                    ->email()
+                Forms\Components\TextInput::make('price')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('address')
-                    ->required()
-                    ->maxLength(255),
+                    ->numeric()
+                    ->prefix('DZD'),
                 Forms\Components\Select::make('category')
-                    ->relationship('categories', 'name')->searchable()
-                    ->preload()
+                    ->relationship('categories', 'name')
                     ->multiple()
-                    ->required(),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
+                    ->preload()
                     ->required(),
                 Forms\Components\Textarea::make('description')
                     ->maxLength(65535)
@@ -60,29 +56,27 @@ class SupplierResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('country.name'),
+                Tables\Columns\TextColumn::make('supplier.name')
+                    ->color('primary')
+                    ->weight(FontWeight::Bold)
+                    ->url(function ($record) {
+                        return route('filament.admin.resources.suppliers.view', ['record' => $record->supplier_id]);
+                    }, true),
                 Tables\Columns\TextColumn::make('categories.name')
                     ->label('Categories')
                     ->listWithLineBreaks(),
-                Tables\Columns\TextColumn::make('email')
-                    ->toggleable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->toggleable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('address')
-                    ->toggleable()
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->money('DZD')
+                    ->sortable(),
             ])
             ->filters([
-                SelectFilter::make('Countries')
-                    ->relationship('country', 'name')
-                    ->multiple()
-                    ->searchable()
-                    ->preload(),
                 SelectFilter::make('Categories')
                     ->relationship('categories', 'name')
                     ->multiple()
+                    ->searchable()
+                    ->preload(),
+                SelectFilter::make('Supplier')
+                    ->relationship('supplier', 'name')
                     ->searchable()
                     ->preload(),
             ])
@@ -108,10 +102,10 @@ class SupplierResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSuppliers::route('/'),
-            'create' => Pages\CreateSupplier::route('/create'),
-            'view' => Pages\ViewSupplier::route('/{record}'),
-            'edit' => Pages\EditSupplier::route('/{record}/edit'),
+            'index' => Pages\ListProducts::route('/'),
+            'create' => Pages\CreateProduct::route('/create'),
+            'view' => Pages\ViewProduct::route('/{record}'),
+            'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
 }
