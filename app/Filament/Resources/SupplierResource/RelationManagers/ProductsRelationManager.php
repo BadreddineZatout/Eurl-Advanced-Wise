@@ -3,13 +3,12 @@
 namespace App\Filament\Resources\SupplierResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Tables;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 
 class ProductsRelationManager extends RelationManager
 {
@@ -34,6 +33,9 @@ class ProductsRelationManager extends RelationManager
                 Forms\Components\Textarea::make('description')
                     ->maxLength(65535)
                     ->columnSpanFull(),
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->preserveFilenames()
+                    ->rules(['image', 'mimes:jpeg,png,jpg']),
             ]);
     }
 

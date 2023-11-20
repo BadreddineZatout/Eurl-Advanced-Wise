@@ -3,17 +3,15 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SupplierResource\Pages;
-use App\Filament\Resources\SupplierResource\RelationManagers;
 use App\Filament\Resources\SupplierResource\RelationManagers\ProductsRelationManager;
 use App\Models\Supplier;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SupplierResource extends Resource
 {
@@ -52,6 +50,9 @@ class SupplierResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->maxLength(65535)
                     ->columnSpanFull(),
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->preserveFilenames()
+                    ->rules(['image', 'mimes:jpeg,png,jpg']),
             ]);
     }
 
@@ -102,7 +103,7 @@ class SupplierResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ProductsRelationManager::class
+            ProductsRelationManager::class,
         ];
     }
 
