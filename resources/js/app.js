@@ -4,11 +4,11 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import piniaPluginPersistedState from "pinia-plugin-persistedstate";
 
-import Header from "./components/Header.vue";
+import Header from "./components/layout/Header.vue";
 import App from "./components/App.vue";
-import Login from "./components/Login.vue";
-import Register from "./components/Register.vue";
-import Product from "./components/Product.vue";
+import Login from "./components/auth/Login.vue";
+import Register from "./components/auth/Register.vue";
+import Product from "./components/products/Product.vue";
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedState);

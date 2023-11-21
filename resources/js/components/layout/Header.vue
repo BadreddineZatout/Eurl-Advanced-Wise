@@ -20,8 +20,8 @@
 
 <script setup>
 import { ref } from "vue";
-import { logout } from "../utils/auth";
-import { useUserStore } from "../stores/user";
+import { logout } from "../../utils/auth";
+import { useUserStore } from "../../stores/user";
 
 const isRegisterPage = ref(window.location.pathname == "/register");
 const isLoginPage = ref(window.location.pathname == "/login");

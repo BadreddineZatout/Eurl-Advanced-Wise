@@ -8,12 +8,12 @@
 </template>
 
 <script setup>
-    import {onMounted, ref} from 'vue'
-    import {getProducts} from "../utils/products"
-    import ProductCard from './ProductCard.vue';
-    
-    let products = ref({});
-    onMounted(async () => {
-        products.value = await getProducts();
-    })
+import { onMounted, ref } from 'vue'
+import { getProducts } from "../../utils/products"
+import ProductCard from './ProductCard.vue';
+
+let products = ref({});
+onMounted(async () => {
+    products.value = await getProducts();
+})
 </script>
