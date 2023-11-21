@@ -1,35 +1,44 @@
 <template>
-    <div class="flex flex-col justify-between rounded-md shadow-md p-2 hover:scale-105">
-        <div>
-            <div>
-                <img class="rounded-md" :src="product.media[0]?.original_url" :alt="product.name">
+    <div class="mt-20 px-20 flex justify-between items-stretch gap-x-5 w-full">
+        <div class="w-1/2 border border-stone-400 bg-stone-100 rounded-lg p-2">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold">{{ product.name }}</h1>
+                <h1 class="text-3xl font-bold">{{ product.price }} DZD</h1>
             </div>
-            <div class="mt-3 pl-3 flex justify-between items-center">
-                <p class="font-semibold text-lg">{{ product.name }}</p>
-                <p class="text-gray-500 font-bold">{{ product.price }} DZD</p>
+            <div class="mt-6 pl-5">
+                <h2 class="text-xl font-semibold">Categories:</h2>
+                <ul class="ml-5 mt-2 list-disc">
+                    <li v-for="category in product.categories" :key="category.id">
+                        {{ category.name }}
+                    </li>
+                </ul>
             </div>
-            <div class="mt-5 pl-3">
-                <h3 class="font-semibold">Description</h3>
-                <p>{{ product.description.length > 50 ? product.description.substring(0, 50) + '...' : product.description }}</p>
+            <div class="mt-10 pl-5">
+                <h2 class="text-xl font-semibold mb-5">Description</h2>
+                <p class="px-2">{{ product.description }}</p>
             </div>
-        </div>
-        <div>
-            <div class="mt-10 flex justify-between items-center text-sm text-gray-400">
-                <p>{{ product.supplier.name }}</p>
-                <p>{{moment(product.created_at).fromNow()}}</p>
+            <div class="mt-10 flex justify-between items-center text-xl">
+                <p>
+                    <span class="text-black font-bold">Supplier:</span>
+                    {{ product.supplier.name }}
+                </p>
+                <p>
+                    <span class="text-black font-bold">Added: </span>{{ moment(product.created_at).fromNow() }}
+                </p>
             </div>
             <div class="text-center mt-2">
-                <a :href="`/products/${product.id}`">
-                    <button class="w-full bg-gray-300 font-semibold hover:bg-gray-500 hover:text-white">
-                        More Details
-                    </button>
-                </a>
+                <button class="w-full bg-stone-300 font-bold text-xl py-2 hover:bg-stone-500 hover:text-white">
+                    Order Now
+                </button>
             </div>
+        </div>
+        <div class="w-1/2">
+            <img class="rounded-md" :src="product.media[0]?.original_url" :alt="product.name" />
         </div>
     </div>
 </template>
 
 <script setup>
-    import moment from "moment";
-    const props = defineProps(['product'])
+import moment from "moment";
+const props = defineProps(["product"]);
 </script>

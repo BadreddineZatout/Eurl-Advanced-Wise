@@ -9,7 +9,7 @@
     @stack('scripts')
 </head>
 
-<body>
+<body class="bg-stone-100">
     <div>
         <div id="header-container">
             <nav-header />
