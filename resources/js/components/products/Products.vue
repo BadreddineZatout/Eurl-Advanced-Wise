@@ -1,7 +1,8 @@
 <template>
     <div class="mt-20 mb-10 px-20">
         <SearchField @search-product="handleSearch" />
-        <h1 v-if="!search" class="text-3xl font-bold">Latest Products</h1>
+        <Filters @filter-category="handleCategoryFilter" @filter-supplier="handleSupplierFilter" />
+        <h1 v-if="!filter.search && !filter.category && !filter.supplier" class="text-3xl font-bold">Latest Products</h1>
         <h1 v-else class="text-3xl font-bold">Search Results</h1>
         <div v-show="is_loading" class="w-full text-center mt-20">
             <PulseLoader :loading="is_loading" color="rgb(120, 113, 108)" size="50px" />
@@ -25,11 +26,12 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
 import ProductCard from './ProductCard.vue';
 import SearchField from './SearchField.vue';
+import Filters from './Filters.vue';
 import { getProducts } from "../../utils/products";
 
 let products = ref({});
@@ -37,7 +39,7 @@ let is_loading = ref(false);
 let is_loading_more = ref(false);
 let no_products = ref(false);
 let show_more = ref(false);
-let search = ref('');
+let filter = reactive({ search: "", category: "", supplier: "" })
 let offset = ref(0);
 let limit = ref(4);
 
@@ -48,23 +50,31 @@ onMounted(async () => {
 const loadMore = async () => {
     is_loading_more.value = true;
     offset.value++;
-    let new_products = await getProducts({ offset: offset.value, search: search.value });
+    let new_products = await getProducts({ offset: offset.value, ...filter });
     products.value = [...products.value, ...new_products];
     is_loading_more.value = false;
     if (new_products.length < limit.value) show_more.value = false;
 }
 
 const handleSearch = async (search) => {
-    await loadData(search);
+    filter.search = search;
+    await loadData();
 }
 
-const loadData = async (search_value = "") => {
-    show_more.value = true;
-    if (search_value) search.value = search_value;
-    else search.value = "";
+const handleCategoryFilter = async (category) => {
+    filter.category = category;
+    await loadData();
+}
 
+const handleSupplierFilter = async (supplier) => {
+    filter.supplier = supplier;
+    await loadData();
+}
+
+const loadData = async () => {
+    show_more.value = true;
     is_loading.value = true;
-    products.value = await getProducts({ search: search.value });
+    products.value = await getProducts({ ...filter });
     is_loading.value = false;
 
     if (!products.value.length) no_products.value = true;
