@@ -19,6 +19,12 @@ class ProductController extends Controller
         $limit = $request->query('limit', 4);
         $offset = $request->query('offset', 0);
 
-        return Product::has('media')->latest()->offset($offset * $limit)->limit($limit)->get();
+        $products = Product::has('media')->latest();
+
+        if ($search = $request->query('search')) {
+            $products->where('name', 'like', "%$search%");
+        }
+
+        return $products->offset($offset * $limit)->limit($limit)->get();
     }
 }

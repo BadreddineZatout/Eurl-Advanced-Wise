@@ -1,6 +1,8 @@
 <template>
-    <div class="mt-20 px-20">
-        <h1 class="text-3xl font-bold">Latest Products</h1>
+    <div class="mt-20 mb-10 px-20">
+        <SearchField @search-product="handleSearch" />
+        <h1 v-if="!search" class="text-3xl font-bold">Latest Products</h1>
+        <h1 v-else class="text-3xl font-bold">Search Results</h1>
         <div v-show="is_loading" class="w-full text-center mt-20">
             <PulseLoader :loading="is_loading" color="rgb(120, 113, 108)" size="50px" />
         </div>
@@ -23,33 +25,49 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
-import { getProducts } from "../../utils/products"
+import { onMounted, ref } from 'vue';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
 import ProductCard from './ProductCard.vue';
+import SearchField from './SearchField.vue';
+import { getProducts } from "../../utils/products";
 
 let products = ref({});
 let is_loading = ref(false);
 let is_loading_more = ref(false);
 let no_products = ref(false);
-let show_more = ref(true);
+let show_more = ref(false);
+let search = ref('');
 let offset = ref(0);
 let limit = ref(4);
 
 onMounted(async () => {
-    is_loading.value = true;
-    products.value = await getProducts(offset.value);
-    is_loading.value = false;
-    if (!products.value.length) no_products.value = true;
+    await loadData();
 })
 
 const loadMore = async () => {
     is_loading_more.value = true;
     offset.value++;
-    let new_products = await getProducts(offset.value);
+    let new_products = await getProducts({ offset: offset.value, search: search.value });
     products.value = [...products.value, ...new_products];
     is_loading_more.value = false;
     if (new_products.length < limit.value) show_more.value = false;
+}
+
+const handleSearch = async (search) => {
+    await loadData(search);
+}
+
+const loadData = async (search_value = "") => {
+    show_more.value = true;
+    if (search_value) search.value = search_value;
+    else search.value = "";
+
+    is_loading.value = true;
+    products.value = await getProducts({ search: search.value });
+    is_loading.value = false;
+
+    if (!products.value.length) no_products.value = true;
+    if (products.value.length < limit.value) show_more.value = false;
 }
 </script>

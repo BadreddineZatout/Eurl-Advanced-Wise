@@ -44,7 +44,7 @@ class UserController extends Controller
         $user = User::where([
             'email' => $request->email,
         ])->first();
-        if (!$user) {
+        if (! $user) {
             return response(['errors' => ['email' => 'Invalid Email']], 401);
         }
         if (Hash::check($request->password, $user->password)) {
