@@ -57,16 +57,19 @@ const loadMore = async () => {
 }
 
 const handleSearch = async (search) => {
+    offset.value = 0;
     filter.search = search;
     await loadData();
 }
 
 const handleCategoryFilter = async (category) => {
+    offset.value = 0;
     filter.category = category;
     await loadData();
 }
 
 const handleSupplierFilter = async (supplier) => {
+    offset.value = 0;
     filter.supplier = supplier;
     await loadData();
 }
