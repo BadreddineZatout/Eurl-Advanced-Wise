@@ -71,6 +71,7 @@ class OrderResource extends Resource
                         'refused' => 'danger',
                     }),
             ])
+            ->defaultSort('id', 'desc')
             ->filters([
                 SelectFilter::make('customer')
                     ->relationship('customer', 'name')
