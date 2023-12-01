@@ -72,6 +72,7 @@
 import { ref, computed } from 'vue';
 import moment from "moment";
 import { useUserStore } from "../../stores/user";
+import { saveOrder } from "../../utils/products";
 
 const props = defineProps(["product"]);
 const userStore = useUserStore();
@@ -97,8 +98,14 @@ const handleReturn = (event) => {
     isOnDetails.value = true;
 }
 
-const handleOrderConfirm = (event) => {
+const handleOrderConfirm = async (event) => {
     event.preventDefault()
-    // send Post request
+    const data = {
+        product_id: props.product.id,
+        quantity: quantity.value,
+        total: orderTotal.value
+    }
+    await saveOrder(data)
+    window.location.href = "/orders"
 }
 </script>

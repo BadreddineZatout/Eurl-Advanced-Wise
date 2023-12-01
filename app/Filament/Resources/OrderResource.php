@@ -50,7 +50,7 @@ class OrderResource extends Resource
                         'completed' => 'Completed',
                     ])
                     ->default('pending')
-                    ->required()
+                    ->required(),
             ]);
     }
 
@@ -89,7 +89,7 @@ class OrderResource extends Resource
                         'accepted' => 'Accepted',
                         'refused' => 'Refused',
                         'completed' => 'Completed',
-                    ])
+                    ]),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -102,7 +102,7 @@ class OrderResource extends Resource
                             $record->status = 'accepted';
                             $record->save();
                         })->hidden(function ($record) {
-                            return !$record->isPending();
+                            return ! $record->isPending();
                         }),
                     Action::make('Refuse Order')
                         ->color('danger')
@@ -111,7 +111,7 @@ class OrderResource extends Resource
                             $record->status = 'refused';
                             $record->save();
                         })->hidden(function ($record) {
-                            return !$record->isPending();
+                            return ! $record->isPending();
                         }),
                     Action::make('Mark as Completed')
                         ->color('success')
@@ -120,9 +120,9 @@ class OrderResource extends Resource
                             $record->status = 'completed';
                             $record->save();
                         })->hidden(function ($record) {
-                            return !$record->isAccepted();
+                            return ! $record->isAccepted();
                         }),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
