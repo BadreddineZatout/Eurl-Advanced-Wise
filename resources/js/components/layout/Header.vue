@@ -11,6 +11,7 @@
             <a class="hover:font-bold hover:text-stone-700" :class="{ active: isLoginPage }" href="login">Login</a>
         </div>
         <div v-if="userStore.isLogged" class="flex justify-between items-center gap-x-5 font-semibold">
+            <a class="hover:font-bold hover:text-stone-700" :class="{ active: isOrdersPage }" href="orders">Orders</a>
             <button class="hover:font-bold hover:text-stone-700" @click="handleLogout">
                 Logout
             </button>
@@ -25,6 +26,7 @@ import { useUserStore } from "../../stores/user";
 
 const isRegisterPage = ref(window.location.pathname == "/register");
 const isLoginPage = ref(window.location.pathname == "/login");
+const isOrdersPage = ref(window.location.pathname == "/orders");
 
 const userStore = useUserStore();
 
