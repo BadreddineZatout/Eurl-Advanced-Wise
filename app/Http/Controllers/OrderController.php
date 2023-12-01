@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        $orders = Order::where('customer_id', auth()->id())->orderBy('id', 'desc')->get();
+        return view('orders.index', compact('orders'));
+    }
+
     public function store(Request $request)
     {
         $order = Order::create([

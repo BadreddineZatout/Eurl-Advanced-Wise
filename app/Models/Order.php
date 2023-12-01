@@ -8,6 +8,8 @@ class Order extends Model
 {
     protected $fillable = ['customer_id', 'product_id', 'quantity', 'total', 'status'];
 
+    protected $with = ['customer', 'product'];
+
     public function customer()
     {
         return $this->belongsTo(User::class, 'customer_id');

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,7 @@ Route::get('login', [UserController::class, 'loginPage']);
 Route::get('register', [UserController::class, 'registerPage']);
 
 Route::get('products/{id}', [ProductController::class, 'show']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/orders', [OrderController::class, 'index']);
+});
