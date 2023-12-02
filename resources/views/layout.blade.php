@@ -17,8 +17,8 @@
         <div id="app">
             @yield('content')
         </div>
-        <div>
-
+        <div id="footer-container">
+            <nav-footer />
         </div>
     </div>
 </body>
