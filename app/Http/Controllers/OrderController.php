@@ -13,6 +13,11 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
+    public function show(Order $order)
+    {
+        return view('orders.show', compact('order'));
+    }
+
     public function store(Request $request)
     {
         $order = Order::create([

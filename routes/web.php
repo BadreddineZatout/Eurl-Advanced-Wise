@@ -25,6 +25,5 @@ Route::get('register', [UserController::class, 'registerPage']);
 
 Route::get('products/{id}', [ProductController::class, 'show']);
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/orders', [OrderController::class, 'index']);
-});
+Route::get('/orders', [OrderController::class, 'index']);
+Route::get('/orders/{order}', [OrderController::class, 'show']);

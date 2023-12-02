@@ -12,7 +12,7 @@
                         <h2 class="text-2xl text-stone-600 font-bold">#{{ order.id }} - {{ order.product.name }}</h2>
                         <h3 class="order-details">quantity: <span class="font-semibold">{{ order.quantity }}</span></h3>
                         <h3 class="order-details">Total: <span class="font-semibold">{{ order.total }} DA</span></h3>
-                        <h3 class="order-details">status: <span class="px-3 py-1 rounded-md border font-semibold"
+                        <h3 class="order-details">status: <span class="text-sm px-3 py-1 rounded-md border font-semibold"
                                 :class="getStatusStyle(order)">{{
                                     order.status }}</span></h3>
                     </div>
