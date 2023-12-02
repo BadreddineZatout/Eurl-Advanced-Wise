@@ -10,6 +10,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::where('customer_id', auth()->id())->orderBy('id', 'desc')->get();
+
         return view('orders.index', compact('orders'));
     }
 
@@ -28,5 +29,13 @@ class OrderController extends Controller
         ]);
 
         return response()->json(['order' => $order], 201);
+    }
+
+    public function cancel(Order $order)
+    {
+        $order->status = 'cancelled';
+        $order->save();
+
+        return response()->json(['message' => 'Canceled successfully'], 200);
     }
 }

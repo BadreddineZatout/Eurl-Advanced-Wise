@@ -72,7 +72,7 @@
 import { ref, computed } from 'vue';
 import moment from "moment";
 import { useUserStore } from "../../stores/user";
-import { saveOrder } from "../../utils/products";
+import { saveOrder } from "../../utils/orders";
 
 const props = defineProps(["product"]);
 const userStore = useUserStore();

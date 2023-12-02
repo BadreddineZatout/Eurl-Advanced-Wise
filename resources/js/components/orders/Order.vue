@@ -30,13 +30,21 @@
 
 <script setup>
 import { ref } from "vue";
+import { cancelOrder } from "../../utils/orders"
+
 const props = defineProps(["order"]);
 const getStatusStyle = () => {
-    if (props.order.status == 'pending') return 'text-stone-700 bg-stone-200 border-stone-500';
+    if (props.order.status == "pending") return 'text-stone-700 bg-stone-200 border-stone-500';
     if (props.order.status == "accepted") return 'text-green-500 bg-green-100 border-green-500';
-    if (props.order.status == "refused") return 'text-red-500 bg-red-100 border-red-500';
     if (props.order.status == "completed") return 'text-yellow-500 bg-yellow-100 border-yellow-500';
+    return 'text-red-500 bg-red-100 border-red-500';
 }
 
 const canCancel = ref(props.order.status == 'pending' || props.order.status == 'accepted');
+
+const handleCancelOrder = async (event) => {
+    event.preventDefault()
+    await cancelOrder(props.order.id)
+    window.location.href = "/orders"
+}
 </script>

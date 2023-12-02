@@ -69,6 +69,7 @@ class OrderResource extends Resource
                         'completed' => 'success',
                         'accepted' => 'warning',
                         'refused' => 'danger',
+                        'cancelled' => 'danger',
                     }),
             ])
             ->defaultSort('id', 'desc')
@@ -89,6 +90,7 @@ class OrderResource extends Resource
                         'accepted' => 'Accepted',
                         'refused' => 'Refused',
                         'completed' => 'Completed',
+                        'cancelled' => 'Cancelled',
                     ]),
             ])
             ->actions([

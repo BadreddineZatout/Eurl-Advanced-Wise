@@ -29,10 +29,10 @@
 <script setup>
 const props = defineProps(["orders"])
 const getStatusStyle = (order) => {
-    if (order.status == 'pending') return 'text-stone-700 bg-stone-200 border-stone-500';
+    if (order.status == "pending") return 'text-stone-700 bg-stone-200 border-stone-500';
     if (order.status == "accepted") return 'text-green-500 bg-green-100 border-green-500';
-    if (order.status == "refused") return 'text-red-500 bg-red-100 border-red-500';
     if (order.status == "completed") return 'text-yellow-500 bg-yellow-100 border-yellow-500';
+    return 'text-red-500 bg-red-100 border-red-500';
 }
 </script>
 
