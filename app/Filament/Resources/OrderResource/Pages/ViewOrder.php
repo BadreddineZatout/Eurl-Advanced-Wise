@@ -22,7 +22,7 @@ class ViewOrder extends ViewRecord
                     $record->status = 'accepted';
                     $record->save();
                 })->hidden(function ($record) {
-                    return !$record->isPending();
+                    return ! $record->isPending();
                 }),
             Action::make('Refuse Order')
                 ->color('danger')
@@ -31,7 +31,7 @@ class ViewOrder extends ViewRecord
                     $record->status = 'refused';
                     $record->save();
                 })->hidden(function ($record) {
-                    return !$record->isPending();
+                    return ! $record->isPending();
                 }),
             Action::make('Mark as Completed')
                 ->color('success')
@@ -40,7 +40,7 @@ class ViewOrder extends ViewRecord
                     $record->status = 'completed';
                     $record->save();
                 })->hidden(function ($record) {
-                    return !$record->isAccepted();
+                    return ! $record->isAccepted();
                 }),
         ];
     }

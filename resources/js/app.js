@@ -9,6 +9,8 @@ import App from "./components/App.vue";
 import Login from "./components/auth/Login.vue";
 import Register from "./components/auth/Register.vue";
 import Product from "./components/products/Product.vue";
+import Orders from "./components/orders/Orders.vue";
+import Order from "./components/orders/Order.vue";
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedState);
@@ -24,4 +26,6 @@ app.component("app", App);
 app.component("login", Login);
 app.component("register", Register);
 app.component("product", Product);
+app.component("orders", Orders);
+app.component("order", Order);
 app.mount("#app");

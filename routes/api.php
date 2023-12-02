@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
@@ -29,3 +30,8 @@ Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/categories', [CategoryController::class, 'getCategories']);
 Route::get('/suppliers', [SupplierController::class, 'getSuppliers']);
 Route::get('/products', [ProductController::class, 'getProducts']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/orders', [OrderController::class, 'store']);
+    Route::post('/orders/{order}/cancel', [OrderController::class, 'cancel']);
+});
