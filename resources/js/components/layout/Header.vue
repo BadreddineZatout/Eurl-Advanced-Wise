@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full flex justify-between items-center px-5 py-3 shadow-md bg-stone-200">
+    <div class="w-full flex justify-between items-center px-5 py-3 shadow-md bg-stone-300">
         <div>
             <h1 class="text-2xl font-bold">
                 <a href="/">Eurl Advanced & Wise</a>
