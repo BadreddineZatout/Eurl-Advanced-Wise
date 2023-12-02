@@ -11,7 +11,7 @@
             <h1 class="text-3xl font-bold">No Products Yet!!!</h1>
         </div>
         <div v-show="!is_loading">
-            <div class="grid grid-cols-4 gap-5 pt-5 px-5">
+            <div id="products" class="grid grid-cols-4 gap-5 pt-5 px-5">
                 <ProductCard v-for="product in products" :key="product.id" :product="product" />
             </div>
             <div v-if="!no_products && show_more" class="text-center mt-10">

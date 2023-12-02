@@ -5,6 +5,8 @@ import { createPinia } from "pinia";
 import piniaPluginPersistedState from "pinia-plugin-persistedstate";
 
 import Header from "./components/layout/Header.vue";
+import Footer from "./components/layout/Footer.vue";
+
 import App from "./components/App.vue";
 import Login from "./components/auth/Login.vue";
 import Register from "./components/auth/Register.vue";
@@ -29,3 +31,7 @@ app.component("product", Product);
 app.component("orders", Orders);
 app.component("order", Order);
 app.mount("#app");
+
+const footer = createApp({});
+footer.component("nav-footer", Footer);
+footer.mount("#footer-container");
