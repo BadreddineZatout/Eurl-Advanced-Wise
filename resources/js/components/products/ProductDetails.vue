@@ -17,11 +17,15 @@
             {{ product.supplier.name }}
         </p>
         <p>
-            <span class="text-black font-bold">Added: </span>{{ moment(product.created_at).fromNow() }}
+            <span class="text-black font-bold">Added: </span
+            >{{ moment(product.created_at).fromNow() }}
         </p>
     </div>
     <div class="text-center mt-2">
-        <button class="w-full bg-stone-300 font-bold text-xl py-2 hover:bg-stone-500 hover:text-white" @click="handleOrder">
+        <button
+            class="w-full bg-stone-300 font-bold text-xl py-2 hover:bg-stone-500 hover:text-white"
+            @click="handleOrder"
+        >
             Order Now
         </button>
     </div>

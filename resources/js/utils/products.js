@@ -7,7 +7,7 @@ export const getProducts = async ({
     supplier = "",
 }) => {
     const response = await fetch(
-        `${API_URL}/api/products?offset=${offset}&search=${search}&category=${category}&supplier=${supplier}`
+        `${API_URL}/api/products?offset=${offset}&search=${search}&category=${category}&supplier=${supplier}`,
     );
     return response.json();
 };
