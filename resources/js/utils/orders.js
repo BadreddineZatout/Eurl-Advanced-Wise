@@ -1,6 +1,17 @@
 import { API_URL } from "../data";
 import { useUserStore } from "../stores/user";
 
+export const getOrders = async () => {
+    const userStore = useUserStore();
+    const response = await fetch(`${API_URL}/api/orders`, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userStore.token}`,
+        },
+    });
+    return response.json();
+};
+
 export const saveOrder = async (data) => {
     const userStore = useUserStore();
     const response = await fetch(`${API_URL}/api/orders`, {

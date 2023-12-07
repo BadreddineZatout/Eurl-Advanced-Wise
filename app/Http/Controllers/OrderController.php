@@ -9,9 +9,12 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::where('customer_id', auth()->id())->orderBy('id', 'desc')->get();
+        return view('orders.index');
+    }
 
-        return view('orders.index', compact('orders'));
+    public function getOrders()
+    {
+        return Order::where('customer_id', auth()->id())->orderBy('id', 'desc')->get();
     }
 
     public function show(Order $order)
