@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-96 flex justify-center items-center mt-36">
+    <div v-if="!userStore.isLogged" class="w-full h-96 flex justify-center items-center mt-36">
         <form class="w-1/4 shadow-md rounded-md px-5 py-10" @submit="handleSubmit">
             <div class="w-full text-center mb-5">
                 <h1 class="text-3xl font-bold">Register</h1>
@@ -39,10 +39,16 @@
             </div>
         </form>
     </div>
+    <div v-else class="w-full text-center my-32">
+        <h1 class="text-3xl font-bold">You're logged, Redirecting
+            <PulseLoader :loading="is_loading" color="rgb(120, 113, 108)" />
+        </h1>
+    </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onBeforeMount } from "vue";
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { register } from "../../utils/auth";
 import { useUserStore } from "../../stores/user"
 
@@ -53,6 +59,10 @@ const password_confirmation = ref("")
 let errorMessages = ref({})
 
 const userStore = useUserStore()
+
+onBeforeMount(() => {
+    if (userStore.isLogged) window.location.href = "/";
+});
 
 const handleSubmit = async (event) => {
     event.preventDefault();

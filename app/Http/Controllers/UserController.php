@@ -15,10 +15,6 @@ class UserController extends Controller
      */
     public function loginPage()
     {
-        if (auth()->check()) {
-            return redirect('/');
-        }
-
         return view('auth.login');
     }
 
@@ -27,10 +23,6 @@ class UserController extends Controller
      */
     public function registerPage()
     {
-        if (auth()->check()) {
-            return redirect('/');
-        }
-
         return view('auth.register');
     }
 
