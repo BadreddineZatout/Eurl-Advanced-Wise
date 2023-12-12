@@ -1,10 +1,10 @@
 <template>
     <div
         v-if="!userStore.isLogged"
-        class="w-full h-96 flex justify-center items-center mt-36"
+        class="w-full h-96 flex justify-center items-center mt-36 px-5 mb-52"
     >
         <form
-            class="w-1/4 shadow-md rounded-md px-5 py-10"
+            class="w-full sm:w-1/2 lg:w-1/3 shadow-md rounded-md px-5 py-10"
             @submit="handleSubmit"
         >
             <div class="w-full text-center mb-5">
