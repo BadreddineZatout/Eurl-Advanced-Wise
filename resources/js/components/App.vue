@@ -1,8 +1,7 @@
 <template>
     <div
-        class="w-full border-b-2 bg-stone-200 shadow-lg border-stone-300 mb-10 px-20 py-10 flex justify-between items-center"
-    >
-        <div class="w-1/2">
+        class="w-full border-b-2 bg-stone-200 shadow-lg border-stone-300 mb-10 px-10 lg:px-20 py-10 flex justify-between items-center">
+        <div class="w-full lg:w-1/2">
             <h1 class="text-3xl text-stone-500 font-bold mb-1">
                 EURL ADVANCED & WISE BUSINESS
             </h1>
@@ -33,7 +32,7 @@
                 <a class="btn-link" href="#contact">Contact Us</a>
             </div>
         </div>
-        <div class="w-1/2">
+        <div class="w-1/2 hidden lg:block">
             <img src="/images/delivery.png" alt="" />
         </div>
     </div>
