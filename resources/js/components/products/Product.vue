@@ -62,7 +62,7 @@
                             required
                         />
                     </div>
-                    <div class="grid">
+                    <div class="grid mb-20">
                         <div class="font-semibold">
                             <span class="text-xl font-bold">Unit Price:</span>
                             {{ product.price }} DA
