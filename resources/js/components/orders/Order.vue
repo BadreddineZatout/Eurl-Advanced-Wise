@@ -1,7 +1,9 @@
 <template>
-    <div class="mt-20 px-20 flex justify-between items-stretch gap-x-5 w-full">
+    <div
+        class="mt-20 px-5 lg:px-20 flex flex-col-reverse lg:flex-row justify-between items-stretch gap-x-5 gap-y-5 w-full"
+    >
         <div
-            class="w-1/2 border border-stone-400 bg-stone-100 rounded-lg p-2 relative"
+            class="w-full lg:w-1/2 border border-stone-400 bg-stone-100 rounded-lg p-2 relative"
         >
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold">#{{ order.id }}</h1>
@@ -12,7 +14,7 @@
                     {{ order.status }}
                 </h1>
             </div>
-            <div class="border border-stone-200 p-5 mt-10">
+            <div class="border border-stone-200 p-5 mt-10 mb-20">
                 <ul class="list-disc pl-5 text-xl font-bold">
                     <li>
                         Product:
@@ -39,7 +41,7 @@
 
             <div
                 v-if="canCancel"
-                class="text-center mt-2 absolute w-11/12 left-7 bottom-2"
+                class="text-center mt-2 absolute w-5/6 left-7 sm:left-12 lg:w-11/12 lg:left-7 bottom-2"
             >
                 <button
                     class="w-full bg-stone-300 font-bold text-xl py-2 hover:bg-stone-500 hover:text-white"
@@ -49,7 +51,7 @@
                 </button>
             </div>
         </div>
-        <div class="w-1/2">
+        <div class="w-full lg:w-1/2">
             <img
                 class="rounded-md"
                 :src="order.product.media[0]?.original_url"
