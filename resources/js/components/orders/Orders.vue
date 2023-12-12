@@ -1,6 +1,6 @@
 <template>
-    <div class="mt-20 mb-10 px-20">
-        <h1 class="text-3xl font-bold">My Orders</h1>
+    <div class="mt-20 mb-10 px-5 lg:px-20">
+        <h1 class="text-2xl lg:text-3xl font-bold">My Orders</h1>
         <div v-show="is_loading" class="w-full text-center mt-20">
             <PulseLoader
                 :loading="is_loading"
@@ -11,14 +11,18 @@
         <div v-show="no_orders" class="w-full text-center mt-20">
             <h1 class="text-3xl font-bold">No Orders Yet!!!</h1>
         </div>
-        <div v-show="!is_loading" class="grid gap-y-5 px-20 mt-10">
+        <div v-show="!is_loading" class="grid gap-y-5 lg:px-20 mt-10">
             <div
                 v-for="order in orders"
                 :key="order.id"
-                class="flex justify-between items-center rounded-lg shadow-lg border border-stone-200 px-5 py-3 hover:scale-110"
+                class="flex flex-col lg:flex-row justify-between items-center rounded-lg shadow-lg border border-stone-200 px-5 py-3 hover:scale-105 lg:hover:scale-110"
             >
-                <div class="font-semibold grid grid-cols-2 gap-x-3 w-1/2">
-                    <div class="col-span-1 rounded-lg overflow-hidden">
+                <div
+                    class="font-semibold grid grid-cols-1 lg:grid-cols-2 gap-x-3 w-full lg:w-1/2"
+                >
+                    <div
+                        class="col-span-1 rounded-lg mb-2 lg:mb-0 overflow-hidden"
+                    >
                         <img
                             :src="order.product.media[0]?.original_url"
                             alt=""
@@ -50,7 +54,7 @@
                         </h3>
                     </div>
                 </div>
-                <div class="text-stone-500">
+                <div class="text-stone-500 mt-10 lg:mt-0">
                     <a
                         :href="`/orders/${order.id}`"
                         class="font-semibold text-lg hover:underline hover:font-bold"
