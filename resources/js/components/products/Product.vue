@@ -1,7 +1,9 @@
 <template>
-    <div class="mt-20 px-20 flex justify-between items-stretch gap-x-5 w-full">
+    <div
+        class="mt-20 px-5 md:px-10 lg:px-20 flex flex-col-reverse lg:flex-row justify-between items-stretch gap-x-5 gap-y-5 w-full"
+    >
         <div
-            class="w-1/2 border border-stone-400 bg-stone-100 rounded-lg p-2 relative"
+            class="w-full lg:w-1/2 border border-stone-400 bg-stone-100 rounded-lg p-2 relative"
         >
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold">{{ product.name }}</h1>
@@ -10,7 +12,7 @@
                 </h1>
             </div>
             <div v-show="isOnDetails">
-                <div class="mt-6 pl-5">
+                <div class="mt-6">
                     <h2 class="text-xl font-semibold">Categories:</h2>
                     <ul class="ml-5 mt-2 list-disc">
                         <li
@@ -21,7 +23,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="mt-10 pl-5">
+                <div class="mt-10">
                     <h2 class="text-xl font-semibold mb-5">Description</h2>
                     <p class="px-2">{{ product.description }}</p>
                 </div>
@@ -60,7 +62,7 @@
                             required
                         />
                     </div>
-                    <div class="grid pl-5">
+                    <div class="grid">
                         <div class="font-semibold">
                             <span class="text-xl font-bold">Unit Price:</span>
                             {{ product.price }} DA
@@ -89,7 +91,7 @@
                 </form>
             </div>
         </div>
-        <div class="w-1/2">
+        <div class="w-full lg:w-1/2">
             <img
                 class="rounded-md"
                 :src="product.media[0]?.original_url"
