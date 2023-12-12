@@ -1,44 +1,26 @@
 <template>
-    <div class="mt-20 mb-10 px-20">
+    <div class="mt-20 mb-10 px-10 md:px-20">
         <SearchField @search-product="handleSearch" />
-        <Filters
-            @filter-category="handleCategoryFilter"
-            @filter-supplier="handleSupplierFilter"
-        />
-        <h1
-            v-if="!filter.search && !filter.category && !filter.supplier"
-            class="text-3xl font-bold"
-        >
+        <Filters @filter-category="handleCategoryFilter" @filter-supplier="handleSupplierFilter" />
+        <h1 v-if="!filter.search && !filter.category && !filter.supplier" class="text-2xl md:text-3xl font-bold">
             Latest Products
         </h1>
         <h1 v-else class="text-3xl font-bold">Search Results</h1>
         <div v-show="is_loading" class="w-full text-center mt-20">
-            <PulseLoader
-                :loading="is_loading"
-                color="rgb(120, 113, 108)"
-                size="50px"
-            />
+            <PulseLoader :loading="is_loading" color="rgb(120, 113, 108)" size="50px" />
         </div>
         <div v-show="no_products" class="w-full text-center mt-20">
             <h1 class="text-3xl font-bold">No Products Yet!!!</h1>
         </div>
         <div v-show="!is_loading">
-            <div id="products" class="grid grid-cols-4 gap-5 pt-5 px-5">
-                <ProductCard
-                    v-for="product in products"
-                    :key="product.id"
-                    :product="product"
-                />
+            <div id="products" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5 px-5">
+                <ProductCard v-for="product in products" :key="product.id" :product="product" />
             </div>
             <div v-if="!no_products && show_more" class="text-center mt-10">
                 <button
                     class="flex justify-between items-center gap-x-2 mx-auto bg-stone-300 font-semibold py-2 px-3 rounded-lg hover:bg-stone-400 hover:text-white"
-                    @click="loadMore"
-                >
-                    <ClipLoader
-                        :loading="is_loading_more"
-                        color="rgb(120, 113, 108)"
-                    />
+                    @click="loadMore">
+                    <ClipLoader :loading="is_loading_more" color="rgb(120, 113, 108)" />
                     Load More...
                 </button>
             </div>
