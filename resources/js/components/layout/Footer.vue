@@ -3,18 +3,22 @@
         id="contact"
         class="mt-20 px-5 md:px-20 py-10 border-stone bg-stone-300"
     >
-        <div class="flex items-start gap-x-5 lg:gap-x-10">
+        <div class="flex flex-col sm:flex-row items-start gap-x-5 lg:gap-x-10">
             <div>
-                <img src="/images/logo.png" alt="" />
+                <img
+                    class="h-20 sm:h-fit"
+                    src="/images/logo.png"
+                    alt="Locapp"
+                />
             </div>
             <div class="grid gap-y-2">
                 <div>
                     <h1 class="text-3xl text-stone-500 font-bold mb-1">
-                        EURL ADVANCED & WISE BUSINESS
+                        SARL LOCAPP
                     </h1>
-                    <h2 class="text-xl font-semibold mb-5">
-                        Kitchen equipment, Furniture & Home Appliance
-                        -Electronics and Gifts
+                    <h2 class="text-xl font-semibold mb-5 w-full lg:w-2/3">
+                        Plomberie, Outillage & Quincaillerie Générale,
+                        Hydraulique, Equipements HSE & Des Réseaux Anti-incendie
                     </h2>
                 </div>
                 <div class="flex items-center gap-x-3 font-bold">
@@ -37,7 +41,7 @@
                             stroke-linejoin="round"
                         ></path>
                     </svg>
-                    <p>Cité Si Houass , Hassi Messaoud-(A cote DHL HMD)</p>
+                    <p>CITE Mokrani 02 - lot 261 - Hassi Messaoud</p>
                 </div>
                 <div class="flex items-center gap-x-3 font-bold">
                     <svg
@@ -54,10 +58,7 @@
                             stroke-linejoin="round"
                         ></path>
                     </svg>
-                    <p>
-                        Alger Showroom /Atelier : Cité les Mandariniers, villa
-                        n°293 Mohammedia
-                    </p>
+                    <p>Stocks: HMD , Touggourt , Alger</p>
                 </div>
                 <div class="flex items-center gap-x-3 font-bold">
                     <svg
@@ -74,7 +75,9 @@
                             stroke-linejoin="round"
                         ></path>
                     </svg>
-                    <a href="tel:+213 23 75 01 39 ">+213 (0) 23 75 01 39</a>
+                    <a href="tel:+213 671 10 23"
+                        >Commercial M.Chifik.Medjaoul: +213 (0) 671 10 23</a
+                    >
                 </div>
                 <div class="flex items-center gap-x-3 font-bold">
                     <svg
@@ -91,27 +94,8 @@
                             stroke-linejoin="round"
                         ></path>
                     </svg>
-                    <a href="tel: +213 541 54 68 36">+213 (0) 541 54 68 36</a>
-                </div>
-                <div class="flex items-center gap-x-3 font-bold">
-                    <svg
-                        aria-hidden="true"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path>
-                    </svg>
-                    <a
-                        href="mailto:contact@eurl-adwise.com"
-                        class="hover:underline"
-                        >contact@eurl-adwise.com</a
+                    <a href="tel: +213 661 47 86 72"
+                        >Direction: +213 (0) 661 47 86 72</a
                     >
                 </div>
                 <div class="flex items-center gap-x-3 font-bold">
@@ -130,9 +114,9 @@
                         ></path>
                     </svg>
                     <a
-                        href="mailto:officewise.dz@gmail.com"
+                        href="mailto:commercial@locapp-dz.com"
                         class="hover:underline"
-                        >officewise.dz@gmail.com</a
+                        >commercial@locapp-dz.com</a
                     >
                 </div>
                 <div class="flex items-center gap-x-3 font-bold">
@@ -145,13 +129,15 @@
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <path
-                            d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
+                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                         ></path>
                     </svg>
-                    <a href="www.eurl-adwise.com" class="hover:underline"
-                        >www.eurl-adwise.com</a
+                    <a
+                        href="mailto:direction@locapp-dz.com"
+                        class="hover:underline"
+                        >direction@locapp-dz.com</a
                     >
                 </div>
             </div>

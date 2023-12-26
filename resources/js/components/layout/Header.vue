@@ -5,10 +5,7 @@
         <div>
             <h1 class="text-2xl font-bold">
                 <a href="/"
-                    ><img
-                        class="h-20"
-                        src="/images/logo.png"
-                        alt="Eurl Advanced & Wise"
+                    ><img class="h-20" src="/images/logo.png" alt="Locapp"
                 /></a>
             </h1>
         </div>

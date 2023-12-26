@@ -46,7 +46,7 @@ class ProductResource extends Resource
                     ->maxLength(65535)
                     ->columnSpanFull(),
                 SpatieMediaLibraryFileUpload::make('image')
-                    ->disk(env("STORAGE_DISK"))
+                    ->disk(env('STORAGE_DISK'))
                     ->preserveFilenames()
                     ->rules(['image', 'mimes:jpeg,png,jpg']),
             ]);
