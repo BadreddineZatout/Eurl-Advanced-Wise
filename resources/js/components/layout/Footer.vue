@@ -76,7 +76,7 @@
                         ></path>
                     </svg>
                     <a href="tel:+213 671 10 23"
-                        >Commercial M.Chifik.Medjaoul: +213 (0) 671 10 23</a
+                        >Commercial M.Chifik.Medjaoul: +213 (0) 671 10 23 10</a
                     >
                 </div>
                 <div class="flex items-center gap-x-3 font-bold">
