@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -29,6 +30,7 @@ Route::post('/logout', [UserController::class, 'logout']);
 
 Route::get('/categories', [CategoryController::class, 'getCategories']);
 Route::get('/suppliers', [SupplierController::class, 'getSuppliers']);
+Route::get('/brands', [BrandController::class, 'getBrands']);
 Route::get('/products', [ProductController::class, 'getProducts']);
 
 Route::middleware('auth:sanctum')->group(function () {

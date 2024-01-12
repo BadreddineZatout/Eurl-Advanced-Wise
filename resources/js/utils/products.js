@@ -4,10 +4,10 @@ export const getProducts = async ({
     offset = 0,
     search = "",
     category = "",
-    supplier = "",
+    brand = "",
 }) => {
     const response = await fetch(
-        `${API_URL}/api/products?offset=${offset}&search=${search}&category=${category}&supplier=${supplier}`,
+        `${API_URL}/api/products?offset=${offset}&search=${search}&category=${category}&brand=${brand}`,
     );
     return response.json();
 };
@@ -17,7 +17,7 @@ export const getCategories = async () => {
     return response.json();
 };
 
-export const getSuppliers = async () => {
-    const response = await fetch(`${API_URL}/api/suppliers`);
+export const getBrands = async () => {
+    const response = await fetch(`${API_URL}/api/brands`);
     return response.json();
 };

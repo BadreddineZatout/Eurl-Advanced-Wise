@@ -3,10 +3,10 @@
         <SearchField @search-product="handleSearch" />
         <Filters
             @filter-category="handleCategoryFilter"
-            @filter-supplier="handleSupplierFilter"
+            @filter-brand="handleBrandFilter"
         />
         <h1
-            v-if="!filter.search && !filter.category && !filter.supplier"
+            v-if="!filter.search && !filter.category && !filter.brand"
             class="text-2xl md:text-3xl font-bold"
         >
             Latest Products
@@ -63,7 +63,7 @@ let is_loading = ref(false);
 let is_loading_more = ref(false);
 let no_products = ref(false);
 let show_more = ref(false);
-let filter = reactive({ search: "", category: "", supplier: "" });
+let filter = reactive({ search: "", category: "", brand: "" });
 let offset = ref(0);
 let limit = ref(4);
 
@@ -92,9 +92,9 @@ const handleCategoryFilter = async (category) => {
     await loadData();
 };
 
-const handleSupplierFilter = async (supplier) => {
+const handleBrandFilter = async (brand) => {
     offset.value = 0;
-    filter.supplier = supplier;
+    filter.brand = brand;
     await loadData();
 };
 

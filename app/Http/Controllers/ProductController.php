@@ -31,9 +31,9 @@ class ProductController extends Controller
             });
         }
 
-        if ($supplier = $request->query('supplier')) {
-            $products->whereHas('supplier', function ($query) use ($supplier) {
-                return $query->where('suppliers.id', $supplier);
+        if ($brand = $request->query('brand')) {
+            $products->whereHas('brand', function ($query) use ($brand) {
+                return $query->where('brands.id', $brand);
             });
         }
 
