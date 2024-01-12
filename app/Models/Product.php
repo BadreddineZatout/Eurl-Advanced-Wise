@@ -12,13 +12,18 @@ class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    protected $fillable = ['name', 'supplier_id', 'description', 'price'];
+    protected $fillable = ['name', 'supplier_id', 'description', 'price', 'brand_id'];
 
     protected $with = ['media', 'supplier', 'categories'];
 
     public function supplier(): BelongsTo
     {
         return $this->belongsTo(Supplier::class);
+    }
+
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
     }
 
     public function categories(): BelongsToMany

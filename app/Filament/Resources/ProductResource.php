@@ -33,6 +33,11 @@ class ProductResource extends Resource
                     ->searchable()
                     ->preload()
                     ->required(),
+                Forms\Components\Select::make('brand_id')
+                    ->relationship('brand', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
@@ -63,6 +68,12 @@ class ProductResource extends Resource
                     ->weight(FontWeight::Bold)
                     ->url(function ($record) {
                         return route('filament.admin.resources.suppliers.view', ['record' => $record->supplier_id]);
+                    }, true),
+                Tables\Columns\TextColumn::make('brand.name')
+                    ->color('primary')
+                    ->weight(FontWeight::Bold)
+                    ->url(function ($record) {
+                        return route('filament.admin.resources.brands.view', ['record' => $record->brand_id]);
                     }, true),
                 Tables\Columns\TextColumn::make('categories.name')
                     ->label('Categories')
