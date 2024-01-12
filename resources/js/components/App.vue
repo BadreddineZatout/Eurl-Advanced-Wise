@@ -1,7 +1,6 @@
 <template>
     <div
-        class="w-full border-b-2 bg-stone-200 shadow-lg border-stone-300 mb-10 px-10 lg:px-20 py-10 flex justify-between items-center"
-    >
+        class="w-full border-b-2 bg-stone-200 shadow-lg border-stone-300 mb-10 px-10 lg:px-20 py-10 flex justify-between items-center">
         <div class="w-full lg:w-1/2">
             <h1 class="text-3xl text-stone-500 font-bold mb-1">SARL LOCAPP</h1>
             <h2 class="text-xl font-semibold mb-5">
@@ -20,15 +19,13 @@
                 apprendre plus sur votre activité. Nous pensons que nos produits
                 et services peuvent vous aider à répondre à vos besoins.
             </p>
-            <div
-                class="w-full flex justify-around items-center gap-5 md:gap-0 mt-10"
-            >
+            <div class="w-full flex justify-around items-center gap-5 md:gap-0 mt-10">
                 <a class="btn-link" href="#products">Check Our Products</a>
                 <a class="btn-link" href="#contact">Contact Us</a>
             </div>
         </div>
         <div class="w-1/2 hidden lg:block">
-            <img src="/images/delivery.png" alt="" />
+            <img src="/images/home_page.jpg" alt="" />
         </div>
     </div>
     <Products />
