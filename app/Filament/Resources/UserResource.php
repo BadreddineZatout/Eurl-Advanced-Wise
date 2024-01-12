@@ -36,6 +36,10 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('phone')
+                    ->tel()
+                    ->required()
+                    ->maxLength(10),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
@@ -51,6 +55,7 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('email')->searchable(),
+                Tables\Columns\TextColumn::make('phone')->searchable(),
                 Tables\Columns\TextColumn::make('role')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {

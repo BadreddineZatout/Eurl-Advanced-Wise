@@ -32,7 +32,7 @@
                     class="rounded-md border border-gray-500 px-3 py-2"
                     id="email"
                     name="email"
-                    type="text"
+                    type="email"
                     v-model="email"
                 />
                 <p
@@ -40,6 +40,23 @@
                     class="ml-3 mt-2 text-red-500 font-bold text-sm"
                 >
                     {{ errorMessages.email.toString() }}
+                </p>
+            </div>
+            <div class="grid mb-5">
+                <label class="font-semibold" for="phone">Phone Number</label>
+                <input
+                    class="rounded-md border border-gray-500 px-3 py-2"
+                    id="phone"
+                    name="phone"
+                    type="text"
+                    v-model="phone"
+                    maxlength="10"
+                />
+                <p
+                    v-if="errorMessages.phone"
+                    class="ml-3 mt-2 text-red-500 font-bold text-sm"
+                >
+                    {{ errorMessages.phone.toString() }}
                 </p>
             </div>
             <div class="grid mb-5">
@@ -106,6 +123,7 @@ import { useUserStore } from "../../stores/user";
 
 const name = ref("");
 const email = ref("");
+const phone = ref("");
 const password = ref("");
 const password_confirmation = ref("");
 let errorMessages = ref({});
@@ -121,6 +139,7 @@ const handleSubmit = async (event) => {
     const { user, token, errors } = await register({
         name: name.value,
         email: email.value,
+        phone: phone.value,
         password: password.value,
         password_confirmation: password_confirmation.value,
     });

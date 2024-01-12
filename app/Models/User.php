@@ -23,6 +23,7 @@ class User extends Authenticatable implements FilamentUser
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
         'role',
     ];
@@ -55,6 +56,7 @@ class User extends Authenticatable implements FilamentUser
     const REGISTER_RULES = [
         'name' => ['required', 'max:255'],
         'email' => ['required', 'email', 'unique:users,email'],
+        'phone' => ['required', 'unique:users,phone'],
         'password' => ['required', 'min:8', 'confirmed'],
     ];
 

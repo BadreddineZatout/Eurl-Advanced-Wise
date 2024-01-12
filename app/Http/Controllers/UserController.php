@@ -55,8 +55,7 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response(['errors' => $validator->errors()], 400);
         }
-
-        $user = User::create($request->validated());
+        $user = User::create($validator->validated());
         $token = $user->createToken('user-auth');
 
         return response()->json(['user' => $user, 'token' => $token->plainTextToken], 200);
