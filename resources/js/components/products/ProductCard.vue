@@ -29,7 +29,7 @@
             <div
                 class="mt-10 flex justify-between items-center text-sm text-stone-400"
             >
-                <p>{{ product.supplier.name }}</p>
+                <p>{{ product.brand.name }}</p>
                 <p>{{ moment(product.created_at).fromNow() }}</p>
             </div>
             <div class="text-center mt-2">

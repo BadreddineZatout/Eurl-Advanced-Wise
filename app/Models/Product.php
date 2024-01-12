@@ -14,7 +14,7 @@ class Product extends Model implements HasMedia
 
     protected $fillable = ['name', 'supplier_id', 'description', 'price', 'brand_id'];
 
-    protected $with = ['media', 'supplier', 'categories'];
+    protected $with = ['media', 'supplier', 'brand', 'categories'];
 
     public function supplier(): BelongsTo
     {

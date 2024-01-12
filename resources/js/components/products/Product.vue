@@ -29,8 +29,7 @@
                 </div>
                 <div class="mt-10 flex justify-between items-center text-xl">
                     <p>
-                        <span class="text-black font-bold">Supplier:</span>
-                        {{ product.supplier.name }}
+                        {{ product.brand.name }}
                     </p>
                     <p>
                         <span class="text-black font-bold">Added: </span
